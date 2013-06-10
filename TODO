@@ -1,0 +1,111 @@
+iCERC
+Comprehensive Exoplanetary Radial Chart
+================================================================================
+
+To Do
+=====
+
+Open:
+
+- Include a Custom Property combining with a formula already included
+  properties in the catalogue (e.g. planet.Mp**0.25)
+  
+  * Include special routines: HZ(planet).lin, ZAMS(planet).Ls
+
+- Release iCERC through GitHub.
+
+- Write a complete README.
+
+- Create a bunch of presets.
+
+- Rotation of property labels.
+
+- Write an initial greeting message, including a brief explanation about the site.
+
+- Generate mouse sensitive Radial Charts.
+
+- Create modules calculating theoretical properties not included in catalogue.
+
+- If preset already exist prevent creation of a new one.
+
+- Create an automatically dissapearing status bar.
+
+- Choose randomly the color palette.
+
+- Fix the offset problem with equilibrium temperature arc scale.
+
+- Include the Alternate Name option.
+
+- Write a developer guide to help at including new fields.
+
+- Create a separated directory with the iCERC package.
+
+- Protect sensitive directories with .htaccess.
+
+- Consider security issues.
+
+- Write instructions for installation in a server.
+
+- Create a text only icon to include in all files.
+
+- Write science from diagrams and how useful it can be to teach
+  something about exoplanets.
+
+- Show the site and documentation to colleagues.
+
+- Ask to students for generating creative combinations of properties.
+
+- In the filter field put a button "check numbers" to check the number of planets fullfilling filter.
+
+- Show multiple uses of the diagram.
+
+- Enable options to place property arcs closer to chart while leaving
+  the temperature scale at the same distance.
+
+- Put points after lines to place them above the latter. 
+
+- Remove lines when projecting star to property arcs.
+
+- Add lines to the properties scale.
+
+- Save images when saving presets.
+
+- Ask for e-mail when saving presets
+
+- Generate links to diagrams providing the configuration file.
+
+- Create a directory for each preset.
+
+- Create special gadgets for administrators.
+
+- Check all fields are working.
+
+- Reload image button.
+
+- Check in other browsers (firefox, safari, etc.) and movile devices.
+
+- Ask for an e-mail and send a verification message before enable a
+  Community preset.
+
+- Ask for a brief comment.
+
+- Show a comment about the image just below the Presets section of the page.
+
+- Put a border around the Radial Chart.
+
+- Fix the colors.
+
+- Fix directory organization.
+
+- Move the project to a server.
+
+- Customize plot name
+
+Solved:
+
+May. 23/2013:
+- Complete list of matplotlibs palettes.
+- Update button for image.
+
+May. 25/2013
+- Change name of image depending on the date and time when it is created
