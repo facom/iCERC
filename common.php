@@ -34,6 +34,9 @@
 date_default_timezone_set("EST");
 $DATE=getdate();
 $TIME=getToday("%mday%mon%year%hours%minutes%seconds");
+$TMPDIR="tmp";
+$CONVERT=rtrim(shell_exec("which convert"));
+$PYTHONCMD="MPLCONFIGDIR=../../tmp python";
 
 $TEST=0;
 $VERBOSE=0;
@@ -395,6 +398,11 @@ if(!isset($_COOKIE['SESSID'])){
 //////////////////////////////////////////////////////////////////////////////////
 $SESSDIR="run-$SESSID";
 $PRESETID="$SESSID";
+if(!file_exists("$RUNSDIR/$SESSDIR")){
+  shell_exec("cp -Rf $RUNSDIR/template $RUNSDIR/$SESSDIR");
+}else{
+  shell_exec("rm -rf $RUNSDIR/$SESSDIR/config-$SESSID.py");
+}
 
 //////////////////////////////////////////////////////////////////////////////////
 //SELECT IMAGE

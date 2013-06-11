@@ -33,15 +33,6 @@ include("common.php");
 if(!$Update){
 $VERBOSE=0;
 //////////////////////////////////////////////////////////////////////////////////
-//PREPARE RUN
-//////////////////////////////////////////////////////////////////////////////////
-if(!file_exists("$RUNSDIR/$SESSDIR")){
-  shell_exec("cp -Rf $RUNSDIR/template $RUNSDIR/$SESSDIR");
-}else{
-  shell_exec("rm -rf $RUNSDIR/$SESSDIR/config-$SESSID.py");
-}
-
-//////////////////////////////////////////////////////////////////////////////////
 //PREPARE VARIABLES
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -294,7 +285,7 @@ if(!$TEST){
   $figsuf="$SESSID-$TIMEFLAG";
   $figfile="CERC-$figsuf";
   shell_exec("cd $RUNSDIR/$SESSDIR;rm -rf charts/*.{png,pdf}");
-  $out=shell_exec("cd $RUNSDIR/$SESSDIR;python CERC.py config-$SESSID.py $figsuf &> run.log;echo $?");
+  $out=shell_exec("cd $RUNSDIR/$SESSDIR;$PYTHONCMD CERC.py config-$SESSID.py $figsuf &> run.log;echo $?");
   if(str2int($out)){
 echo<<<ERROR
 <div style="background:yellow">
@@ -303,7 +294,7 @@ echo<<<ERROR
 ERROR;
      $figfile="error";
   }
-  shell_exec("/usr/local/bin/convert -resize 30% $RUNSDIR/$SESSDIR/charts/$figfile.png $RUNSDIR/$SESSDIR/charts/$figfile-thumb.png &> /tmp/a");
+  shell_exec("$CONVERT -resize 30% $RUNSDIR/$SESSDIR/charts/$figfile.png $RUNSDIR/$SESSDIR/charts/$figfile-thumb.png &> tmp/convert.log");
 }
 sleep(1);
 }else{
