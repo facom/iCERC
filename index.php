@@ -46,8 +46,8 @@ if(isset($SAVEPRESET)){
     shell_exec("cp -rf runs/run-$SESSID/charts/*[0-9].png 'pres/$fname/chart.png'");
     shell_exec("cp -rf runs/run-$SESSID/charts/*[0-9].pdf 'pres/$fname/chart.pdf'");
     shell_exec("cp -rf runs/run-$SESSID/charts/*[0-9].html 'pres/$fname/chart.html'");
-    shell_exec("sed -e 's/CERC[-a-zA-Z0-9]*/chart/' 'pres/$fname/chart.html' > /tmp/html.$SESSID");
-    shell_exec("cp -rf /tmp/html.$SESSID 'pres/$fname/chart.html'");
+    shell_exec("sed -e 's/CERC[-a-zA-Z0-9]*/chart/' 'pres/$fname/chart.html' > tmp/html.$SESSID");
+    shell_exec("cp -rf tmp/html.$SESSID 'pres/$fname/chart.html'");
     shell_exec("cp -rf runs/run-$SESSID/charts/*[0-9]-thumb.png 'pres/$fname/chart-thumb.png'");
   }
   echo "Preset saved.";
@@ -87,8 +87,8 @@ if(file_exists("$CONFIGFILE")){
     shell_exec("cp -rf 'pres/$fname/chart.pdf' runs/run-$SESSID/charts/CERC-0.pdf");
     shell_exec("cp -rf 'pres/$fname/chart.png' runs/run-$SESSID/charts/CERC-0.png");
     shell_exec("cp -rf 'pres/$fname/chart.html' runs/run-$SESSID/charts/CERC-0.html");
-    shell_exec("sed -e 's/chart/CERC-0/' runs/run-$SESSID/charts/CERC-0.html > /tmp/html.$SESSID");
-    shell_exec("cp -rf /tmp/html.$SESSID runs/run-$SESSID/charts/CERC-0.html");
+    shell_exec("sed -e 's/chart/CERC-0/' runs/run-$SESSID/charts/CERC-0.html > tmp/html.$SESSID");
+    shell_exec("cp -rf tmp/html.$SESSID runs/run-$SESSID/charts/CERC-0.html");
     shell_exec("cp -rf 'pres/$fname/chart-thumb.png' runs/run-$SESSID/charts/CERC-0-thumb.png");
     $imgname="CERC-0";
   }

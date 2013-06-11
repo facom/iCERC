@@ -12,6 +12,7 @@ if(!$qmap){
   return;
 }
 $mapimg=simplexml_load_file($map);
+$img=$mapimg->img["src"];
 function isInShape($x,$y,$s,$c,$w,$h)
 {
   $coords=preg_split("/,/",$c);
