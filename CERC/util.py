@@ -98,7 +98,7 @@ def radLine(ax,r1,r2,angle,
         y2=(1-(y2+fs)/(2*fs))*fw;
 
         if finfo=="":finfo=ftit
-        fmap.write("""<area alt="%s" title="%s" shape="poly" coords="%f,%f,%f,%f,%f,%f,%f,%f" href="%s" target="_blank"><info style="diplay:none">%s%s</info></area>\n"""%(ftit,ftit,x1[0],y1[0],x1[1],y1[1],x2[0],y2[0],x2[1],y2[1],flink,fpre,finfo))
+        fmap.write("""<area alt="%s" title="%s" shape="poly" coords="%f,%f,%f,%f,%f,%f,%f,%f" href="%s" target="_blank"><info style="display:none">%s%s</info></area>\n"""%(ftit,ftit,x1[0],y1[0],x1[1],y1[1],x2[0],y2[0],x2[1],y2[1],flink,fpre,finfo))
     except:
         pass
 
