@@ -1,5 +1,5 @@
-WWWUSER=www-data
-WWWGROUP=www-data
+WWWUSER=$(shell grep www /etc/passwd | head -n 1 | cut -f 1 -d ':')
+WWWGROUP=$(shell grep www /etc/group | head -n 1 | cut -f 1 -d ':')
 WWWDIRS=tmp runs pres
 
 clean:
