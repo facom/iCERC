@@ -86,8 +86,6 @@ ax=fig.add_axes([l,b,w,h])
 ax.set_frame_on(False)
 ax.axes.get_xaxis().set_visible(False)
 ax.set_xticks([]);ax.set_yticks([])
-ax.set_xlim((-conf.FIGSCALE,conf.FIGSCALE))
-ax.set_ylim((-conf.FIGSCALE,conf.FIGSCALE))
 
 #############################################################
 #LOAD DATA
@@ -127,6 +125,7 @@ if conf.QTEMPERATURE:
     #PALETTE
     #==================================================
     dT=0.0;qstepini=False;qstepend=False
+    print conf.AR1/2,conf.AR2/2
     for T in logspace(log10(conf.TCMINA),log10(conf.TCMAXA),1000):
         Teq=log(T/conf.THAB)
         Tcolor=(log10(T/conf.THAB)-log10(conf.TCMINA/conf.THAB))/deltaT
@@ -542,6 +541,8 @@ fmap.close()
 #############################################################
 #SAVE FIGURES
 #############################################################
+ax.set_xlim((-conf.FIGSCALE,conf.FIGSCALE))
+ax.set_ylim((-conf.FIGSCALE,conf.FIGSCALE))
 for format in 'pdf','png':
     figfile=CHARTDIR+conf.FIGFILE+"-"+figsuf+"."+format
     print "Figure '%s' saved..."%figfile
