@@ -62,7 +62,7 @@ def linear(value):
 
 def SEX(angle):
     parts=angle.split()
-    return parts[0]+parts[1]*60+parts[2]*60**2
+    return float(parts[0])+float(parts[1])/60+float(parts[2])/60**2
 
 def radLine(ax,r1,r2,angle,
             tipini=None,tipinimarker='o',tipinisize=5,tipinicolor='k',
@@ -252,6 +252,16 @@ def readCatalogueHeader(file,fid=0):
     nobjs=i-1
     print "%d objects read from %s..."%(nobjs,file)
     return objects,classes
+
+def saveCatalogue(selplanets,keyfields,file):
+    fd=open(file,"w")
+    print "Saving filtered database '%s'..."%file
+    for ID in selplanets.keys():
+        for field in keyfields:
+            exec("p=str(selplanets['%s'].%s)"%(ID,field[0]))
+            fd.write(p+"\t")
+        fd.write("\n");
+    return 0
 
 def readCatalogueFields(file,keyfields,fid=0):
     """

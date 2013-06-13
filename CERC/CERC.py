@@ -58,6 +58,15 @@ except:
     figsuf="Diagram";
 
 #############################################################
+#JUST FILTER
+#############################################################
+try:
+    qfilter=int(argv[3])
+    print "Just filter"
+except:
+    qfilter=0
+
+#############################################################
 #MAP FILE
 #############################################################
 figwidth=conf.FIGWIDTH*100
@@ -98,6 +107,16 @@ allplanets,callplanets=readCatalogueFields(conf.DATADIR+conf.CATFILE,
 #############################################################
 planets=purgeCatalogue(allplanets,conf.CATREQ)
 selplanets=filterCatalogue(planets,conf.CATFIELDS,conf.QUERY)
+
+#############################################################
+#SAVE NEW DATABASE
+#############################################################
+saveCatalogue(selplanets,conf.CATFIELDS,"database.dat");
+if qfilter:exit(0)
+
+#############################################################
+#SAVE NEW DATABASE
+#############################################################
 nplanets=len(selplanets.keys())
 Rps=[]
 IDs=[]

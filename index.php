@@ -43,6 +43,7 @@ if(isset($SAVEPRESET)){
   }else{
     shell_exec("mkdir 'pres/$fname'");
     shell_exec("cp -rf runs/run-$SESSID/config-$SESSID.py 'pres/$fname/config.py'");
+    shell_exec("cp -rf runs/run-$SESSID/database.dat 'pres/$fname/database.dat'");
     shell_exec("cp -rf runs/run-$SESSID/charts/*[0-9].png 'pres/$fname/chart.png'");
     shell_exec("cp -rf runs/run-$SESSID/charts/*[0-9].pdf 'pres/$fname/chart.pdf'");
     shell_exec("cp -rf runs/run-$SESSID/charts/*[0-9].html 'pres/$fname/chart.html'");
@@ -84,6 +85,7 @@ if(file_exists("$CONFIGFILE")){
     $fname=$parts[1];
     shell_exec("rm -rf runs/run-$SESSID/charts/*.*");
     shell_exec("cp -rf 'pres/$fname/config.py' runs/run-$SESSID/config-$SESSID.py");
+    shell_exec("cp -rf 'pres/$fname/database.dat' runs/run-$SESSID/database.dat");
     shell_exec("cp -rf 'pres/$fname/chart.pdf' runs/run-$SESSID/charts/CERC-0.pdf");
     shell_exec("cp -rf 'pres/$fname/chart.png' runs/run-$SESSID/charts/CERC-0.png");
     shell_exec("cp -rf 'pres/$fname/chart.html' runs/run-$SESSID/charts/CERC-0.html");
@@ -294,6 +296,30 @@ Filter command.  Use python syntaxis.$CLOSETEXT
 <textarea cols="30" rows="2" name="QUERY_Submit">
 $QUERY
 </textarea>
+<p></p>
+<button id='filter' 
+  name="Filter_Submit" value="0" 
+  onclick="$(this).attr('value',1);$('#preview').attr('value',0)">Filter</button>
+</td>
+</tr>
+PAGE;
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//FILTER
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+echo<<<PAGE
+<tr>
+<td class="field">
+Database:<br/>
+<a id="database" href="CERC/data/open_exoplanet_catalogue_kepler.csv"
+   target="_blank">
+Complete
+</a>
+<br/>
+<a id="filtered" href="runs/run-$SESSID/database.dat"
+   target="_blank">
+Filtered
+</a>
 </td>
 </tr>
 PAGE;

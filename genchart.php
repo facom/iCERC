@@ -30,6 +30,12 @@
 */
 include("common.php");
 
+if($Filter){
+  $qfilter="1";
+}else{
+  $qfilter="";
+}
+
 if(!$Update){
 $VERBOSE=0;
 //////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +291,7 @@ if(!$TEST){
   $figsuf="$SESSID-$TIMEFLAG";
   $figfile="CERC-$figsuf";
   shell_exec("cd $RUNSDIR/$SESSDIR;rm -rf charts/*.{png,pdf}");
-  $out=shell_exec("cd $RUNSDIR/$SESSDIR;$PYTHONCMD CERC.py config-$SESSID.py $figsuf &> run.log;echo $?");
+  $out=shell_exec("cd $RUNSDIR/$SESSDIR;$PYTHONCMD CERC.py config-$SESSID.py $figsuf $qfilter &> run.log;echo $?");
   if(str2int($out)){
 echo<<<ERROR
 <div style="background:yellow">
