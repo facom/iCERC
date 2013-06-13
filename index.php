@@ -1047,10 +1047,10 @@ echo<<<PAGE
 <div style="text-align:center;padding:5px;">
 <button id='preview' 
   name="Preview_Submit" value="0" 
-  onclick="$(this).attr('value',1);$('#update').attr('value',0)">Preview</button>
+  onclick="$(this).attr('value',1);$('#update').attr('value',0);$('#filter').attr('value',0)">Preview</button>
 <button id='update'
   name="Update_Submit" value="0" 
-  onclick="$(this).attr('value',1);$('#preview').attr('value',0)">Update Figure</button>
+  onclick="$(this).attr('value',1);$('#preview').attr('value',0);$('#filter').attr('value',0)">Update Figure</button>
 </div>
 <div id="DIVBLANKET" class="DIVBLANKET" style="display:none"></div>
 <img id="DIVOVER" class="DIVOVER" 

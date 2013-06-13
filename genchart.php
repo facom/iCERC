@@ -62,7 +62,13 @@ if($VERBOSE) echo "CATFIELDS:".$CATFS."<br/>";
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //ARCS
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-$CATREQS="['Teq','Rp',";
+$CATREQS="[";
+if($CHECKTEQ=='yes'){
+  $CATREQS.="'Teq',";
+}
+if($CHECKRP=='yes'){
+  $CATREQS.="'Rp',";
+}
 $ARCS="[";
 for($i=0;$i<count($CATFIELDS);$i++){
   $catfield=$CATFIELDS[$i];
@@ -287,11 +293,12 @@ fclose($fc);
 //RUN
 //////////////////////////////////////////////////////////////////////////////////
 $out=0;
+$figsuf="$SESSID-$TIMEFLAG";
+$figfile="CERC-$figsuf";
+$cmd="cd $RUNSDIR/$SESSDIR;$PYTHONCMD CERC.py config-$SESSID.py $figsuf $qfilter &> run.log;echo $?";
 if(!$TEST){
-  $figsuf="$SESSID-$TIMEFLAG";
-  $figfile="CERC-$figsuf";
   shell_exec("cd $RUNSDIR/$SESSDIR;rm -rf charts/*.{png,pdf}");
-  $out=shell_exec("cd $RUNSDIR/$SESSDIR;$PYTHONCMD CERC.py config-$SESSID.py $figsuf $qfilter &> run.log;echo $?");
+  $out=shell_exec($cmd);
   if(str2int($out)){
 echo<<<ERROR
 <div style="background:yellow">
@@ -310,7 +317,11 @@ sleep(1);
 //////////////////////////////////////////////////////////////////////////////////
 //OUTPUT
 //////////////////////////////////////////////////////////////////////////////////
-if($TEST) print_r($_GET);
+if($TEST){
+  echo "CMD: $cmd<br/>";
+  echo "CONVERT: $CONVERT<br/>";
+  print_r($_GET);
+}
 $imginfo=imgInfo($SESSID,$figfile);
 echo<<<OUTPUT
 $imginfo

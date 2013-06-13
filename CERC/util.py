@@ -255,6 +255,7 @@ def readCatalogueHeader(file,fid=0):
 
 def saveCatalogue(selplanets,keyfields,file):
     fd=open(file,"w")
+    fd.write("#Np = %d\n"%len(selplanets))
     print "Saving filtered database '%s'..."%file
     for ID in selplanets.keys():
         for field in keyfields:
