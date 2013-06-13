@@ -21,8 +21,7 @@ paths:
 	@ln -s $(CONVERT) /usr/local/bin
 
 push:
-	git commit -am "Commiting"
-	git push origin master
+	git commit -am "Commiting"; git push origin master
 
 pull:
 	git pull
